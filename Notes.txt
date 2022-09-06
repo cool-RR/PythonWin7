@@ -1,0 +1,12 @@
+Python 3.9.x, 3.10.x
+
+Create Python 3.6 venv with sphinx==1.8.5 (if building Python <= 3.10.4) or sphinx==3.5.4 (otherwise).
+Set PYTHON variable to location of python.exe in venv.
+Don't set SPHINXBUILD.
+Don't install HTML Help Compiler or Mercurial.
+If you encounter an error saying that libffi-7.lib can't be opened, apply libffi-fix.patch. Resolve conflicts manually if any.
+If you get an error during documentation build saying that itircl.dll was not registered correctly, go to externals\windows-installer\htmlhelp and run regsvr32 itcc.dll.
+Apply add-dll.patch and enable-win7-install.patch. Ignore whitespace warnings. Resolve conflicts manually if any.
+Set PATCHDIR to the location of release downloaded from https://github.com/nalexandru/api-ms-win-core-path-HACK. This folder should contain x86\api-ms-win-core-path-l1-1-0.dll and x64\api-ms-win-core-path-l1-1-0.dll.
+For 3.9.7 and higher, apply guid-fix.patch so that the built installers are interoperable with official python.org installers.
+Run buildrelease.bat -x86 -x64 --skip-pgo.
